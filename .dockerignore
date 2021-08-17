@@ -1,0 +1,4 @@
+#Es un archivo para evitar que lo suba al repositorio
+
+node_modules
+npm-debug.log
