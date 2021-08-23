@@ -1,10 +1,11 @@
-const { Client, Intents, Channel, Collection } = require("discord.js");
+const { Client, Intents, Channel, Collection,VoiceChannel } = require("discord.js");
 const db = require("dotenv").config();
 const { readdirSync } = require("fs");
 const client = new Client({
-  intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES],
+  intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES,Intents.FLAGS.GUILD_VOICE_STATES],
   partials: ["CHANNEL"],
 });
+
 
 client.config = require("./config");
 client.commands = new Collection();
@@ -12,7 +13,7 @@ client.commands = new Collection();
 //Esto busca los diferentes archivos de comandos y lo que hacen cada uno.
 for (const file of readdirSync("src/commands")) {
   if (file.endsWith(".js")) {
-    let fileName = file.substring(0, file.length - 3);
+    let fileName = file.substring(0, file.length - 3);  
 
     let fileContents = require(`./commands/${file}`);
 
